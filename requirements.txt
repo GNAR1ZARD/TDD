@@ -4,3 +4,4 @@ nose
 pinocchio
 coverage
 pylint
+flake8 # added from task 2
