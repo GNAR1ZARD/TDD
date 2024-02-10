@@ -1,9 +1,10 @@
 from flask import Flask
-from src import status 
+from src import status
 
 app = Flask(__name__)
 
 COUNTERS = {}
+
 
 @app.route('/counters/<name>', methods=['POST'])
 def create_counter(name):
@@ -15,6 +16,7 @@ def create_counter(name):
     COUNTERS[name] = 0
     return {name: COUNTERS[name]}, status.HTTP_201_CREATED
 
+
 @app.route('/counters/<name>', methods=['PUT'])
 def update_counter(name):
     """Increment a counter"""
@@ -24,6 +26,7 @@ def update_counter(name):
         return {"Message": "Counter does not exist"}, status.HTTP_404_NOT_FOUND
     COUNTERS[name] += 1
     return {name: COUNTERS[name]}, status.HTTP_200_OK
+
 
 @app.route('/counters/<name>', methods=['GET'])
 def get_counter(name):
