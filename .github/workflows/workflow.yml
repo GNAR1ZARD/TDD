@@ -31,3 +31,8 @@ jobs:
     - name: Run unit tests with nose
       run: nosetests -v --with-spec --spec-color --with-coverage --cover-package=app
 
+    - name: Generate Documentation
+      run: |
+        pip install sphinx
+        sphinx-apidoc -o docs/source src
+        sphinx-build -b html docs/source docs/build
